@@ -1,0 +1,4 @@
+git+https://github.com/AnandTharad/AksharNMT.git
+gradio
+sentencepiece
+huggingface_hub
