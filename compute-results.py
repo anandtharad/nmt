@@ -5,7 +5,6 @@
 
 import sys
 import sacrebleu
-import evaluate
 
 target_test = sys.argv[1]  # Test file argument
 target_pred = sys.argv[2]  # MTed file argument
@@ -38,13 +37,3 @@ print("MTed 1st sentence:", preds[0])
 
 bleu = sacrebleu.corpus_bleu(preds, refs)
 print(f"\nBLEU: {bleu.score:.4f}")
-
-# Compute METEOR using Hugging Face evaluate
-meteor = evaluate.load("meteor")
-meteor_score = meteor.compute(predictions=preds, references=refs[0])
-print(f"METEOR: {meteor_score['meteor']*100:.4f}")
-
-# Compute chrF++ using Hugging Face evaluate
-chrf = evaluate.load("chrf")
-chrf_score = chrf.compute(predictions=preds, references=refs[0])
-print(f"chrF++: {chrf_score['score']:.4f}")
